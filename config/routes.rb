@@ -24,15 +24,17 @@ Rails.application.routes.draw do
     resources :orders
   end
 
+  get 'customers/my_page' => 'customers#show'
+  patch 'customers/withdraw' => 'customers#withdraw'
+  get 'customers/unsubscribe' => 'customers#unsubscribe'
+
+
   resources :addresses
   resources :cart_items
   resources :customers
   resources :items
   resources :orders
 
-  get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
-  patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_customer'
-  put 'withdraw/:name' => 'customers#withdraw'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
