@@ -4,44 +4,43 @@
 <%= link_to "編集する", edit_customer_path %>
 
 <div class="container">
-    <%= form_with model: @customer, local: true do |f| %>
 
       <table>
 
         <tr>
-         <th><%= f.label :name, '氏名' %></th>
+
          <td><%= @customer.last_name %></td>
          <td><%= @customer.first_name %></td>
         </tr>
 
         <tr>
-         <th><%= f.label :name_kana, 'カナ' %></th>
+
          <td><%= @customer.last_name_kana %></td>
          <td><%= @customer.first_name_kana %></td>
         </tr>
 
         <tr>
-         <th><%= f.label :postal_code, '郵便番号' %></th>
+
          <td><%= @customer.postal_code %></td>
         </tr>
 
         <tr>
-         <th><%= f.label :address,'住所' %></th>
+
          <td><%= @customer.address %></td>
         </tr>
 
         <tr>
-         <th><%= f.label :telephone_number, '電話番号' %></th>
+
          <td><%= @customer.telephone_number %></td>
         </tr>
 
         <tr>
-         <th><%= f.label :email, 'メールアドレス' %></th>
+
          <td><%= @customer.email %></td>
         </tr>
 
       </table>
-    <% end %>
+
 
 </div>
 
