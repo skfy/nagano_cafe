@@ -1,1 +1,19 @@
 <h2>ジャンル一覧・追加</h2>
+
+ <%= form_with model: @genres, local: true do |f| %>
+  <table>
+   <tr>
+    <th><%= f.label :genres_name, 'ジャンル名' %></th>
+     <td><%= f.text_field :genres_name %></td>
+    </tr>
+  </table>
+  <%= f.submit '新規登録' %>
+ <% end %>
+ 
+ 
+  <table>
+   <tr>
+    <td><%= @genres.name %></td>
+    <td></td>
+   </tr>
+  </table>
