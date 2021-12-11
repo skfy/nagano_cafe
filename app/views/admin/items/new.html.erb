@@ -1,1 +1,47 @@
 <h2>商品新規登録</h2>
+ <%= form_with model: @items, local:true do |f| %>
+
+  <tabele>
+   <tr>
+    <td>商品画像</td>
+     <%= attachment_image_tag @items, :image_id, :fill, 60, 60, fallback: "no_image.jpg"%>
+     <label for="inputImage">Image</label>
+     <%= f.attachment_field :profile_image, placeholder: "商品画像" %>
+   </tr></br>
+
+   <tr>
+    <td>商品名</td>
+     <%= f.text_field :name %>
+   </tr></br>
+
+   <tr>
+    <td>商品説明</td>
+     <%= f.text_area :introduction %>
+   </tr></br>
+
+   <tr>
+    <td>ジャンル</td>
+     <%= f.select :genre, [["ケーキ", "ケーキ"], ["プリン", "プリン"], ["焼き菓子", "焼き菓子"], ["キャンディ", "キャンディ"]], include_blank: "選択して下さい" %>
+   </tr></br>
+
+   <tr>
+    <td>税抜価格</td>
+     <%= f.text_field :price %>
+   </tr></br>
+
+   <tr>
+    <td>販売ステータス</td>
+     <%= f.radio_button :is_active, "on_sale" %>
+     <%= f.label :is_active, "販売中" %>
+
+     <%= f.radio_button :is_active, "stop_selling" %>
+     <%= f.label :is_active, "販売停止中" %>
+   </tr></br>
+
+   <tr>
+    <td><%= f.submit '新規登録' %></td>
+   </tr>
+
+  </table>
+
+ <% end %>

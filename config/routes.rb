@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :orders
   end
 
+
+
   devise_for :customers
   root to: 'homes#top'
   get 'home/about' => 'homes#about'
