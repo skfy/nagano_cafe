@@ -8,4 +8,6 @@ class Customer < ApplicationRecord
 
   has_many :addresses, dependent: :destroy
 
+  enum is_active: { effectiveness: true, withdrawal: false }
+
 end
