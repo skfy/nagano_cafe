@@ -1,12 +1,12 @@
 <h2>商品新規登録</h2>
- <%= form_with model: @items, local:true do |f| %>
+ <%= form_with model: [:admin, @items], local:true do |f| %>
 
   <tabele>
    <tr>
     <td>商品画像</td>
      <%= attachment_image_tag @items, :image_id, :fill, 60, 60, fallback: "no_image.jpg"%>
      <label for="inputImage">Image</label>
-     <%= f.attachment_field :profile_image, placeholder: "商品画像" %>
+     <%= f.attachment_field :image, placeholder: "商品画像" %>
    </tr></br>
 
    <tr>
@@ -21,7 +21,7 @@
 
    <tr>
     <td>ジャンル</td>
-     <%= f.select :genre, [["ケーキ", "ケーキ"], ["プリン", "プリン"], ["焼き菓子", "焼き菓子"], ["キャンディ", "キャンディ"]], include_blank: "選択して下さい" %>
+     <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
    </tr></br>
 
    <tr>

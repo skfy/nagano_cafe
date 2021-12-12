@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
 
-  belongs_to :admin
-  attachment :profile_image
+  attachment :image
+  belongs_to :genre
+
+  enum is_active: { on_sale: true, stop_selling: false }
 
 end
