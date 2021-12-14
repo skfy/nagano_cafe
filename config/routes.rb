@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   sessions: 'admin/sessions'
   }
 
+  get '/admin' => 'admin/homes#top'
+
   namespace :admin do
-    get '/admin' => 'homes#top'
     resources :customers
     resources :genres
     resources :items

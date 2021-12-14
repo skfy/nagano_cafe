@@ -1,1 +1,21 @@
-<h4><%= @customer.last_name %><%= @customer.first_name %>さんの注文履歴</h4>
+<h4>注文履歴一覧</h4>
+
+  <table>
+   <tr>
+    <td>購入日時</td>
+    <td>購入者</td>
+    <td>注文個数</td>
+    <td>注文ステータス</td>
+   </tr>
+  </table>
+
+  <% @customers.each do |customer| %>
+  <table>
+   <tr>
+    <td><%= customer.created_at %></td>
+    <td><%= customer.last_name %><%= customer.first_name %></td>
+    <td></td>
+    <td></td>
+   </tr>
+  </table>
+ <% end %>
