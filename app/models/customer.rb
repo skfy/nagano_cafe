@@ -7,6 +7,7 @@ class Customer < ApplicationRecord
   before_save { self.email.downcase! }
 
   has_many :addresses, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   enum is_active: { effectiveness: true, withdrawal: false }
 
