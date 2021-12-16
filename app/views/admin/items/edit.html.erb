@@ -4,7 +4,7 @@
   <tabele>
    <tr>
     <td>商品画像</td>
-     <%= attachment_image_tag @items, :image_id, :fill, 60, 60, fallback: "no_image.jpg"%>
+     <%= attachment_image_tag @items, :image, :fill, 60, 60, fallback: "no_image.jpg"%>
      <label for="inputImage">Image</label>
      <%= f.attachment_field :image, placeholder: "商品画像" %>
    </tr></br>

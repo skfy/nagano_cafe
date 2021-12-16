@@ -1,6 +1,6 @@
 <h2>商品詳細</h2>
 <div>
-  <%= attachment_image_tag @item, :image %>
+  <p><%= attachment_image_tag @item, :image %><p>
   <p>商品名：<%= @item.name %></p>
   <p>商品説明：<%= @item.introduction %></p>
   <p>ジャンル：<%= @item.genre.name %></p>
