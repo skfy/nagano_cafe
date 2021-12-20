@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
 
   post 'orders/confirm' => 'orders#confirm'
+  get 'orders/complete' => 'orders#complete'
   resources :addresses
   resources :cart_items
   resources :customers
