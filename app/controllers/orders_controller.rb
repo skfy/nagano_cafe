@@ -9,6 +9,10 @@ class OrdersController < ApplicationController
 
   end
 
+  def index
+    @order_details = OrderDetail.all
+  end
+
   def confirm
     @order = current_customer.orders.new
     if params[:order][:address_option] == "0"
