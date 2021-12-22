@@ -17,7 +17,7 @@
       <td><%= order_detail.order.address %></td>
       <td><%= order_detail.item_id %></td>
       <td><%= order_detail.price %></td>
-      <td><%= order_detail.making_status_i18n %></td>
+      <td><%= order_detail.order.status_i18n %></td>
       <td><%= link_to '表示する', order_path(order_detail.order.id) %></td>
     </tr>
    <% end %>
