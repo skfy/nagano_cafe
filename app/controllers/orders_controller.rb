@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
+    @order.total_payment = total_price
   end
 
   def index
@@ -43,6 +44,8 @@ class OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @order.shopping_cost = 800
     @order.status = 0
+    @order.total_payment = total_price
+    #@total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def create
@@ -51,7 +54,7 @@ class OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @order.status = 0
     @cart_items.each do |cart_item|
-    @order_detail = OrderDetail.new(order_id: @order.id, item_id: cart_item.item_id, price: cart_item.item.price, amount: cart_item.amount, making_status: @order.status)
+    @order_detail = OrderDetail.new(order_id: @order.id, item_id: cart_item.item_id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
     end
     @order_detail.save
     redirect_to orders_complete_path
@@ -61,6 +64,15 @@ class OrdersController < ApplicationController
   end
 
   private
+  def total_price
+    @cart_items = current_customer.cart_items
+    @sum = 0
+    @cart_items.each do |cart_item|
+    @sum += cart_item.item.with_tax_price * cart_item.amount
+    end
+    return @sum
+  end
+
   def order_params
     params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shopping_cost, :total_payment, :payment_method, :status)
   end
