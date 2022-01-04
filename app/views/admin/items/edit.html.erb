@@ -1,5 +1,8 @@
 <h2>商品編集</h2>
-<%= form_with model: [:admin, @items], local:true do |f| %>
+<div class="container">
+ <div class="row">
+  <div class="col-md-10 col-md-offset-1">
+  <%= form_with model: [:admin, @items], local:true do |f| %>
 
   <tabele>
    <tr>
@@ -31,10 +34,10 @@
 
    <tr>
     <td>販売ステータス</td>
-     <%= f.radio_button :is_active, "on_sale" %>
+     <%= f.radio_button :is_active, true %>
      <%= f.label :is_active, "販売中" %>
 
-     <%= f.radio_button :is_active, "stop_selling" %>
+     <%= f.radio_button :is_active, false %>
      <%= f.label :is_active, "販売停止中" %>
    </tr></br>
 
@@ -44,4 +47,7 @@
 
   </table>
 
- <% end %>
+   <% end %>
+   </div>
+  </div>
+ </div>
