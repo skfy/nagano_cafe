@@ -10,6 +10,6 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
 
-  enum is_active: { effectiveness: true, withdrawal: false }
+  #enum is_active: { effectiveness: true, withdrawal: false }
 
 end

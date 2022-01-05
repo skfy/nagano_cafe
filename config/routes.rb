@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   #devise_for :admin
 
-  #get '/admin' => 'admin/homes#top'
+  get '/admin' => 'admin/homes#top'
 
   namespace :admin do
     resources :customers
