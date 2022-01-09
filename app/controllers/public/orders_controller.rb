@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class Public::OrdersController < ApplicationController
 
   def new
     @addresses = current_customer.addresses
@@ -8,11 +8,10 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
-    @order.total_payment = total_price
   end
 
   def index
-    @order_details = OrderDetail.all
+    @orders = Order.all
   end
 
   def confirm
@@ -54,9 +53,10 @@ class OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @order.status = 0
     @cart_items.each do |cart_item|
-    @order_detail = OrderDetail.new(order_id: @order.id, item_id: cart_item.item_id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
+      @order_detail = OrderDetail.new(order_id: @order.id, item_id: cart_item.item_id, price: cart_item.item.price, amount: cart_item.amount, making_status: 0)
+      @order_detail.save
     end
-    @order_detail.save
+    @cart_items.destroy_all
     redirect_to orders_complete_path
   end
 

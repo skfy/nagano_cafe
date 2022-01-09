@@ -7,7 +7,7 @@
     <p class="text-center">退会する場合は、「退会する」をクリックしてください。</p>
     <p class="text-center">
      <%= link_to '退会しない', customers_my_page_path(@customer) %>
-     <%= link_to "退会する", customers_withdraw_path, method: :patch %>
+     <%= link_to "退会する", customers_withdraw_path, method: :patch, "data-confirm" => "退会しますか？" %>
     </p>
   </div>
  </div>
