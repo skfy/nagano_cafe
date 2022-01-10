@@ -22,7 +22,7 @@
      </tr>
      <tr>
       <td>注文ステータス</td>
-      <%= form_with model: @order, url: admin_order_path, local:true do |f| %>
+      <%= form_with model: @order, url: admin_order_path(@order), local:true, method: :patch do |f| %>
       <td>
        <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
        <%#= f.select :status, [["入金待ち", "入金待ち"], ["入金確認", "入金確認"], ["製作中", "製作中"], ["発送準備中", "発送準備中"], ["発送済み", "発送済み"]], include_blank: @order.status_i18n %>
@@ -47,7 +47,7 @@
       <td><%= order_item.price %></td>
       <td><%= order_item.amount %></td>
       <td><%= @subtotal = order_item.item.with_tax_price * order_item.amount %></td>
-      <%= form_with model: order_item, url: admin_order_detail_path, local:true do |f| %>
+      <%= form_with model: order_item, url: admin_order_detail_path(order_item), local:true, method: :patch do |f| %>
       <td>
        <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
        <%#= f.select :making_status, [["製作不可", "0"], ["製作待ち", "1"], ["製作中", "2"], ["製作完了", "3"]], include_blank: "着手不可" %>
